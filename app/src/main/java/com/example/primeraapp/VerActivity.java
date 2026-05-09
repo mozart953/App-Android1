@@ -8,6 +8,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.primeraapp.db.DbContactos;
 import com.example.primeraapp.entidades.Contactos;
@@ -16,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class VerActivity extends AppCompatActivity {
 
     EditText txtNombre, txtTelefono, txtCorreo;
+    TextView FechaCreacion;
     Button btnGuarda;
     FloatingActionButton fabEditar;
 
@@ -32,6 +34,7 @@ public class VerActivity extends AppCompatActivity {
         txtNombre = findViewById(R.id.txtNombre);
         txtTelefono = findViewById(R.id.txtTelefono);
         txtCorreo = findViewById(R.id.txtCorreoElectronico);
+        FechaCreacion = findViewById(R.id.viewFecha);
         btnGuarda = findViewById(R.id.btnGuarda);
         fabEditar = findViewById(R.id.fabEditar);
 
@@ -56,6 +59,7 @@ public class VerActivity extends AppCompatActivity {
             txtCorreo.setText(contacto.getCorreo_electronico());
             btnGuarda.setVisibility(View.INVISIBLE);
             txtNombre.setInputType(InputType.TYPE_NULL);
+            FechaCreacion.setText(contacto.getFechaCreacion().toString());
             txtTelefono.setInputType(InputType.TYPE_NULL);
             txtCorreo.setInputType(InputType.TYPE_NULL);
 

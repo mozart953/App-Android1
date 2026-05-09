@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import com.example.primeraapp.entidades.Contactos;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DbContactos extends DbHelper{
     Context  context;
@@ -20,8 +21,9 @@ public class DbContactos extends DbHelper{
         this.context = context;
     }
 
-    public long insertarContacto(String nombre, String telefono, String correo_electronico){
+    public long insertarContacto(String nombre, String telefono, String correo_electronico, long date){
         long id = 0;
+
 
         try {
             DbHelper dbHelper = new DbHelper(context);
@@ -31,6 +33,7 @@ public class DbContactos extends DbHelper{
             values.put("nombre", nombre);
             values.put("telefono", telefono);
             values.put("correo_electronico", correo_electronico);
+            values.put("fechaCreacion", date);
             id = db.insert(TABLE_CONTACTOS, null, values);
         }catch (Exception ex){
             ex.toString();
@@ -56,6 +59,7 @@ public class DbContactos extends DbHelper{
                 contacto.setNombre(cursorContactos.getString(1));
                 contacto.setTelefono(cursorContactos.getString(2));
                 contacto.setCorreo_electronico(cursorContactos.getString(3));
+                contacto.setFechaCreacion(new Date (cursorContactos.getLong(4)));
                 listaContactos.add(contacto);
             }while (cursorContactos.moveToNext());
         }

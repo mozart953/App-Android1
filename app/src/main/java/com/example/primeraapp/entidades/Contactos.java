@@ -1,10 +1,22 @@
 package com.example.primeraapp.entidades;
 
+import java.util.Date;
+
 public class Contactos {
     private int id;
     private String nombre;
     private String telefono;
     private String correo_electronico;
+
+    private Date fechaCreacion;
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
 
     public int getId() {
         return id;

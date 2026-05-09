@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.example.primeraapp.db.DbContactos;
 
+import java.util.Date;
+
 public class NuevoActivity extends AppCompatActivity {
 
     EditText txtNombre, txtTelefono, txtCorreoElectronico;
@@ -23,13 +25,15 @@ public class NuevoActivity extends AppCompatActivity {
         txtNombre = findViewById(R.id.txtNombre);
         txtTelefono = findViewById(R.id.txtTelefono);
         txtCorreoElectronico = findViewById(R.id.txtCorreoElectronico);
+        Date fechaCreacion = new Date();
+        long fecha = fechaCreacion.getTime();
         btnGuarda = findViewById(R.id.btnGuarda);
 
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DbContactos dbContactos = new DbContactos(NuevoActivity.this);
-                long id = dbContactos.insertarContacto(txtNombre.getText().toString(),txtTelefono.getText().toString(),txtCorreoElectronico.getText().toString());
+                long id = dbContactos.insertarContacto(txtNombre.getText().toString(),txtTelefono.getText().toString(),txtCorreoElectronico.getText().toString(), fecha);
 
                 if(id>0){
                     Toast.makeText(NuevoActivity.this,"REGISTRO GUARDADO", Toast.LENGTH_LONG).show();

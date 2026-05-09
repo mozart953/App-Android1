@@ -51,6 +51,12 @@
         android:inputType="textEmailAddress"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/viewFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hint_fecha_creacion" />
+
     <Button
         android:id="@+id/btnGuarda"
         android:layout_width="match_parent"
